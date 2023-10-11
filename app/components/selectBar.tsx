@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select } from 'antd';
 import { useState } from 'react';
+import { selectedPops } from '@/types';
 
 
 const onSearch = (value: string) => {
@@ -14,8 +15,8 @@ const filterOption = (input: string, option?: { label: string; value: string }) 
 
   const options= [
     {
-      value: 'America',
-      label: 'America',
+      value: 'Americas',
+      label: 'Americas',
     },
     {
       value: 'Asia',
@@ -37,24 +38,23 @@ const filterOption = (input: string, option?: { label: string; value: string }) 
 
  
 
-const SelectBar: React.FC = () => {
-  const [value, setValue]= useState<string>("")
-  const onChange = (value: string) => {
-    console.log("selected value:", value);
-    setValue(value)
-  };
+const SelectBar = ({selectedValue, handleChange}: selectedPops) => {
+  
 
 return (
+  <>
   <Select
     className=' w-60 h-auto'
-    showSearch
-    onChange={onChange}
+    value = {selectedValue}
+    onChange={handleChange}
     placeholder="Choose the Continent"
     optionFilterProp="children"
     onSearch={onSearch}
     filterOption={filterOption}
     options={options}
   />
+  
+  </>
 )
 }
 

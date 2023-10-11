@@ -3,6 +3,7 @@ import { Params } from "@/types";
 import Image from "next/image";
 import { resultProps } from "@/types";
 import { CountryCard } from "@/app/components";
+import Link from "next/link";
 
 
 
@@ -27,11 +28,11 @@ async function getDetail(name: string){
   return (
     <>
   
-    <div className="flex justify-center align-middle items-center" >
+    <div className="flex justify-center align-middle items-center  dark:bg-gray-900 dark:text-white p-3" >
       {data?.map((item: resultProps) => (
         <>
         
-          <div className=" flex-col justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
+          <div className=" flex justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
             <div className="relative">
               <Image src={item.flags.png}
                   width={200}
@@ -40,12 +41,26 @@ async function getDetail(name: string){
                   alt={item.name.common}
             />
           </div>
-        <div className=" align-baseline p-2">
-          <h1>{item.name.common}</h1>
-          <br></br>
-          <p>Population: {item.population}</p>
-          <p>Region: {item.region}</p>
-          <p>Capital: {item.capital}</p>
+          
+            <div className=" p-2">
+              <h1>{item.name.common}</h1>
+              <br></br>
+            <div className="flex gap-6">
+              <div>
+              
+              <p>Population: {item.population}</p>
+              <p>Region: {item.region}</p>
+              <p>Sub region: {item.subregion}</p>
+              <p>Capital: {item.capital}</p>
+            </div>
+            <div>
+              <p>Top LevelDomain: {item.tld[0]}</p>
+              <div className=" mt-4  p-2">
+              <Link className=" bg-sky-500 p-3 shadow-xl border-solid rounded-lg border " href={item.maps.googleMaps}> Go to Maps </Link>
+              </div>
+            </div>
+            </div>
+            
         </div>
         </div>
         </>

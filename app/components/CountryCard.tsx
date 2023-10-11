@@ -16,13 +16,13 @@ const CountryCard = ({ item }: CardResultProps ) => {
   }
   return (
     
-<div className=" flex-col m-2 align-middle hover:shadow-2xl  dark:bg-gray-900 dark:text-white p-3">
+<div className=" flex-col m-2 align-middle cursor-pointer hover:shadow-2xl  p-3">
     <div onClick={handleClick}>
-        <div className="relative">
+        <div className=" w-52 h-52">
             <Image src={item.flags.png}
-                 width={200}
-                 height={200}
-                 style={{objectFit:"cover"}}
+                 width={500}
+                 height={500}
+                 style={{objectFit:"fill"}}
                  alt={item.name.common}
 
           />

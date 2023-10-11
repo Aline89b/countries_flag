@@ -26,7 +26,7 @@ if (theme === "dark"){
             { theme === "dark" ? (
 
             
-        <div  className="flex">
+        <div  className="flex cursor-pointer">
             <Image src="/light_mode.png"
                 width={20}
                 height={20}
@@ -35,7 +35,7 @@ if (theme === "dark"){
         />
             <p>Light Mode</p>
         </div>) : (
-        <div  className="flex">
+        <div  className="flex  cursor-pointer">
             <Image src="/dark_mode.png"
             width={20}
             height={20}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AutoComplete } from 'antd';
 import { useState, useEffect } from 'react';
-import { resultProps } from '@/types';
+import { resultProps, selectedPops } from '@/types';
 import { CountryCard } from '.';
 import SelectBar from './selectBar';
 
@@ -20,7 +20,19 @@ const SearchBar: React.FC = () => {
   
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [newArr, setnewArr] = useState<resultProps[]>([]);
-  
+  const [selectedValue, setSelectedValue]= useState<string>("")
+  const [selectedArr, setSelectedArr]= useState<resultProps[]>([])
+
+
+  const handleChange = (value: string) => {
+    console.log("selected value:", value);
+    setSelectedValue(value)
+    const selectedArr = data.filter(item=> ( 
+      item.region === selectedValue))
+      console.log(selectedArr)
+      setSelectedArr(selectedArr)
+  };
+
   
   function onChange (value: string){
     let filtered = data.filter(item=> ( 
@@ -43,7 +55,7 @@ const SearchBar: React.FC = () => {
     
   return(
 <>
-<div className=" flex justify-between dark:bg-gray-900 dark:text-white p-3">
+<div className=" flex justify-between p-3">
     <AutoComplete
       onSearch={handleSearch}
       onChange={onChange}
@@ -55,13 +67,18 @@ const SearchBar: React.FC = () => {
       }
       
     />
-    <SelectBar />
+    <SelectBar handleChange ={handleChange} selectedValue={selectedValue} />
   </div>
   <div className=" flex flex-wrap dark:bg-gray-900 dark:text-white">
-  {newArr.length === 0 ? data.map((item) =>
-    < CountryCard item = {item}  />
-  ) : newArr.map(item => < CountryCard item = { item } /> 
-)}
+  {newArr.length !== 0 ? 
+   newArr.map((item) =>
+    < CountryCard item = {item}  /> )
+  : selectedArr.length !==0 ? selectedArr.map((item) => < CountryCard item = { item } /> )
+  : data.map((item) =>
+  < CountryCard item = {item}  />
+  ) 
+}
+
 
 </div>
 </>
