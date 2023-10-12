@@ -1,6 +1,5 @@
 import React from 'react';
 import { Select } from 'antd';
-import { useState } from 'react';
 import { selectedPops } from '@/types';
 
 
@@ -38,18 +37,19 @@ const filterOption = (input: string, option?: { label: string; value: string }) 
 
  
 
-const SelectBar = ({selectedValue, handleChange}: selectedPops) => {
+const SelectBar = ({ handleChange}: selectedPops) => {
   
 
 return (
   <>
   <Select
     className=' w-60 h-auto'
-    value = {selectedValue}
-    onChange={handleChange}
+    onSelect={handleChange}
+    autoFocus
     placeholder="Choose the Continent"
     optionFilterProp="children"
     onSearch={onSearch}
+    showSearch
     filterOption={filterOption}
     options={options}
   />

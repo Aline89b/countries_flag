@@ -1,7 +1,7 @@
 import React from 'react';
 import { AutoComplete } from 'antd';
 import { useState, useEffect } from 'react';
-import { resultProps, selectedPops } from '@/types';
+import { resultProps } from '@/types';
 import { CountryCard } from '.';
 import SelectBar from './selectBar';
 
@@ -20,15 +20,14 @@ const SearchBar: React.FC = () => {
   
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [newArr, setnewArr] = useState<resultProps[]>([]);
-  const [selectedValue, setSelectedValue]= useState<string>("")
+ // const [selectedValue, setSelectedValue]= useState<string>("")
   const [selectedArr, setSelectedArr]= useState<resultProps[]>([])
 
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: string): void => {
     console.log("selected value:", value);
-    setSelectedValue(value)
     const selectedArr = data.filter(item=> ( 
-      item.region === selectedValue))
+      item.region === value))
       console.log(selectedArr)
       setSelectedArr(selectedArr)
   };
@@ -37,7 +36,8 @@ const SearchBar: React.FC = () => {
   function onChange (value: string){
     let filtered = data.filter(item=> ( 
         item.name.common.toLowerCase().includes(value) ||
-         item.region.toLowerCase().includes(value)))
+         item.region.toLowerCase().includes(value) ||
+         item.name.common.toLowerCase() === value.toLowerCase()  ))
       console.log(data)
       console.log(filtered)
       setnewArr(filtered)
@@ -45,7 +45,6 @@ const SearchBar: React.FC = () => {
   const handleSearch = (value: string) => {
     let filtered = data.filter(item=> ( 
       item.name.common.toLowerCase().includes(value))).map((item)=> ({
-        
         value: item.name.common,
       }))
     console.log(data)
@@ -57,6 +56,7 @@ const SearchBar: React.FC = () => {
 <>
 <div className=" flex justify-between p-3">
     <AutoComplete
+      autoFocus
       onSearch={handleSearch}
       onChange={onChange}
       style={{ width: 200 }}
@@ -67,7 +67,7 @@ const SearchBar: React.FC = () => {
       }
       
     />
-    <SelectBar handleChange ={handleChange} selectedValue={selectedValue} />
+    <SelectBar handleChange ={handleChange} />
   </div>
   <div className=" flex flex-wrap dark:bg-gray-900 dark:text-white">
   {newArr.length !== 0 ? 

@@ -46,9 +46,7 @@ if (theme === "dark"){
     </div>
 
         )} 
-        <div>
-            <Link className= "border p-1 rounded-md mr-2"href="/">Log In</Link>
-        </div>
+        
         </div>
    </>
     

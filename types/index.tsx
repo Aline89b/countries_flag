@@ -23,15 +23,6 @@ export type resultProps = {
     capital: string[0];
     borders: string[];
 
-    currencies: {
-      EUR: {
-        name: string,
-        symbol: string
-      }
-    }
-    languages: {
-      fra: string
-    }
     tld: string[]
 
     
@@ -45,8 +36,6 @@ export type resultProps = {
 }
 
 export type selectedPops = {
-  selectedValue: string,
-  handleChange : () => string
-  
-  
+  handleChange : (value: string) => void
+    
 }
