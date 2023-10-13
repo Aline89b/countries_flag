@@ -72,10 +72,10 @@ const SearchBar: React.FC = () => {
   <div className=" flex flex-wrap dark:bg-gray-900 dark:text-white">
   {newArr.length !== 0 ? 
    newArr.map((item) =>
-    < CountryCard item = {item}  /> )
-  : selectedArr.length !==0 ? selectedArr.map((item) => < CountryCard item = { item } /> )
+    < CountryCard item = {item} key={item.cca3}  /> )
+  : selectedArr.length !==0 ? selectedArr.map((item) => < CountryCard item = { item } key={item.cca3} /> )
   : data.map((item) =>
-  < CountryCard item = {item}  />
+  < CountryCard item = {item} key={item.cca3}  />
   ) 
 }
 

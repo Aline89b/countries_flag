@@ -22,7 +22,7 @@ export type resultProps = {
     }
     capital: string[0];
     borders: string[];
-
+    cca3: string;
     tld: string[]
 
     
