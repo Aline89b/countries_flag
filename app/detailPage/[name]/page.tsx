@@ -1,7 +1,6 @@
 import { Params } from "@/types";
 import Image from "next/image";
 import { resultProps } from "@/types";
-import { CountryCard } from "@/app/components";
 import Link from "next/link";
 
 export async function generateStaticParams() {
@@ -46,11 +45,10 @@ async function DetailPage({ params }: Params) {
   
   console.log(result)
 
-
   return (
     <div className="flex flex-wrap  dark:bg-gray-900 dark:text-white p-3">
       {data?.map((item: resultProps) => (
-        <div key={item.cca3} className=" flex md:flex-col justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
+        <div key={item.name.common} className=" flex md:flex-col justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
           
             <div className="flex flex-wrap ">
             <div className="flex-col ">
@@ -64,12 +62,10 @@ async function DetailPage({ params }: Params) {
                   alt={item.name.common}
                 />
               </div>
-
-              <div className=" flex flex-wrap p-2">
-                <h1 className=" font-extrabold">{item.name.common}</h1>
-                <br></br>
-                <div className="flex  gap-6">
+                <div className="flex  p-2 gap-6">
                   <div>
+                  <h1 className=" font-extrabold">{item.name.common}</h1>
+                  <br></br>
                     <p><span className=" font-bold">Native Name:</span> {Object.values(item.name.nativeName)[0].common}</p>
                     <p><span className=" font-bold">Population:</span> {item.population}</p>
                     <p><span className=" font-bold">Region: </span>{item.region}</p>
@@ -90,7 +86,7 @@ async function DetailPage({ params }: Params) {
                     </div>
                   </div>
                 </div>
-              </div>
+              
               </div>
               <div className="flex justify-center mt-16">
                 <div className="mb-8 flex gap-2">
