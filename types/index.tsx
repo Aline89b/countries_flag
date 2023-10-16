@@ -7,7 +7,7 @@ export type resultProps = {
       common: string,
       official: string,
       nativeName: {
-         spa: {
+         string: {
           common: string
         }
       } 
@@ -16,6 +16,11 @@ export type resultProps = {
       png: string,
       svg: string
     };
+    languages: string[];
+    currencies: [{
+      name:  string[]
+    }
+    ]; 
     maps: {
       googleMaps: string,
       openStreetMaps: string
@@ -31,7 +36,8 @@ export type resultProps = {
 
   export type Params = {
     params: {
-        name: string
+        name: string,
+        code: string
     }
 }
 
