@@ -51,7 +51,7 @@ async function DetailPage({ params }: Params) {
     <div className="flex flex-wrap  dark:bg-gray-900 dark:text-white p-3">
       {data?.map((item: resultProps) => (
         <div className=" flex flex-wrap justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
-          
+          key={item.cca3}
             <div className="flex flex-wrap">
             <div className="flex-col flex-wrap ">
             <div className="flex justify-center">
