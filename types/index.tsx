@@ -3,6 +3,7 @@ export type resultProps = {
     region: string;
     subregion: string;
     population: number;
+    ccn3: number;
     name: {
       common: string,
       official: string,
