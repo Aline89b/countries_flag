@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import Image from "next/image";
 import { resultProps } from "@/types";
 import { useRouter } from "next/navigation";
@@ -16,7 +15,7 @@ const CountryCard = ({ item }: CardResultProps ) => {
   }
   return (
     
-<div className=" flex-col m-2 align-middle cursor-pointer hover:shadow-2xl  p-3">
+<div className=" flex-col flex-wrap m-2 align-middle cursor-pointer hover:shadow-2xl  p-3">
     <div onClick={handleClick}>
         <div className=" w-52 h-52">
             <Image src={item.flags.png}

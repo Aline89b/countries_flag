@@ -21,7 +21,7 @@ if (theme === "dark"){
 
   return (
     <>
-        <div className="flex justify-between border-b-2 p-4 dark:bg-slate-500 dark:text-white dark:border-none">
+        <div className="flex flex-wrap justify-between border-b-2 p-4 dark:bg-slate-500 dark:text-white dark:border-none">
             <Link href="/">Where in the world?</Link>
             { theme === "dark" ? (
 

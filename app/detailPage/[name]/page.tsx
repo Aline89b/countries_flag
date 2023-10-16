@@ -50,11 +50,11 @@ async function DetailPage({ params }: Params) {
   return (
     <div className="flex flex-wrap  dark:bg-gray-900 dark:text-white p-3">
       {data?.map((item: resultProps) => (
-        <div className=" flex flex-wrap justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
-          key={item.cca3}
-            <div className="flex flex-wrap">
-            <div className="flex-col flex-wrap ">
-            <div className="flex justify-center">
+        <div key={item.cca3} className=" flex md:flex-col justify-center m-2 items-center align-middle hover:shadow-2xl w-fit p-2">
+          
+            <div className="flex flex-wrap ">
+            <div className="flex-col ">
+            <div className="flex justify-center flex-wrap">
               <div className="relative">
                 <Image
                   src={item.flags.png}
@@ -65,10 +65,10 @@ async function DetailPage({ params }: Params) {
                 />
               </div>
 
-              <div className=" p-2">
+              <div className=" flex flex-wrap p-2">
                 <h1 className=" font-extrabold">{item.name.common}</h1>
                 <br></br>
-                <div className="flex gap-6">
+                <div className="flex  gap-6">
                   <div>
                     <p><span className=" font-bold">Native Name:</span> {Object.values(item.name.nativeName)[0].common}</p>
                     <p><span className=" font-bold">Population:</span> {item.population}</p>
@@ -80,7 +80,7 @@ async function DetailPage({ params }: Params) {
                     <p><span className=" font-bold">Top LevelDomain:</span> {item.tld[0]}</p>
                     <p><span className=" font-bold">Currencies:</span> {Object.values(item.currencies)[0].name}</p>
                     <p><span className=" font-bold">Languages:</span> {Object.values(item.languages).join(", ")}</p>
-                    <div className=" mt-4  p-2">
+                    <div className=" flex flex-wrap mt-4  p-2">
                       <Link
                         className=" bg-sky-500 p-3 shadow-xl border-solid rounded-lg border "
                         href={item.maps.googleMaps}
