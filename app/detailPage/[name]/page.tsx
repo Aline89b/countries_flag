@@ -6,31 +6,9 @@ import Link from "next/link";
 export async function generateStaticParams() {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const data = await res.json();
-  return data.map((item: resultProps) => ({ name: item.name.common }));
+  return  data.map((item: resultProps) => ({ name: item.name.common }));
 }
-export async function getStaticPaths() {
-  // When this is true (in preview environments) don't
-  // prerender any static pages
-  // (faster builds, but slower initial page load)
-  if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-    return {
-      paths: [],
-      fallback: 'blocking',
-    }
-  }
 
-  // Call an external API endpoint to get posts
-  const res = await fetch('https://restcountries.com/v3.1/all')
-  const data = await res.json()
-
-  // Get the paths we want to prerender based on posts
-  const paths = data.map((item: resultProps) => ({
-    params: { name: item.name.common },
-  }))
-
-  // { fallback: false } means other routes should 404
-  return { paths, fallback: false }
-}
 
 async function getDetail(name: string) {
   const res = await fetch(` https://restcountries.com/v3.1/name/${name} `);
@@ -40,6 +18,7 @@ async function getDetail(name: string) {
   return data;
 }
 
+ 
 async function getAllData() {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const AllData = await res.json();
@@ -52,14 +31,13 @@ async function DetailPage({ params }: Params) {
   const data = await getDetail(params.name);
   console.log(data);
  
-  const AllData = await getAllData();
-  console.log(AllData);
+  
   const borders: string[]=[]
    data.map((country: resultProps)=> {
     return country.borders?.map((item: string)=> borders.push(item))
   });
   console.log(borders)
- 
+  const AllData = await getAllData();
   
   const result = AllData?.filter((country : resultProps) => {
      return  borders?.find((border) =>  border === country.cca3)
@@ -82,7 +60,7 @@ async function DetailPage({ params }: Params) {
                   src={item.flags.png}
                   width={400}
                   height={200}
-                  className="cover"
+                  className="cover h-auto w-auto"
                   alt={item.name.common}
                 />
               </div>

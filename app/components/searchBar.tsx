@@ -6,7 +6,6 @@ import { CountryCard } from '.';
 import SelectBar from './selectBar';
 
 
-
 const SearchBar: React.FC = () => {
   const [data, setData] = useState<resultProps[]>([])
   useEffect(() => {

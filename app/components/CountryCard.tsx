@@ -21,8 +21,10 @@ const CountryCard = ({ item }: CardResultProps ) => {
             <Image src={item.flags.png}
                  width={500}
                  height={500}
+                 className=" h-auto"
                  style={{objectFit:"fill"}}
                  alt={item.name.common}
+                 priority
 
           />
         </div>

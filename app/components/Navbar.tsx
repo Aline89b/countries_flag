@@ -30,6 +30,9 @@ if (theme === "dark"){
             <Image src="/light_mode.png"
                 width={20}
                 height={20}
+                className="w-auto"
+                
+                blurDataURL={'/light_mode.png'}
                 alt="Theme Icon"
                 onClick={toggle}
         />
@@ -39,6 +42,9 @@ if (theme === "dark"){
             <Image src="/dark_mode.png"
             width={20}
             height={20}
+            className="w-auto"
+            
+            blurDataURL={'/dark_mode.png'}
             alt="Theme Icon"
             onClick={toggle}
     />
