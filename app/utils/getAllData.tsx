@@ -5,6 +5,6 @@ export default async function getAllData() {
   const AllData = await res.json();
   console.log(AllData);
 
-  return AllData;
+  return AllData.slice(0,100);
 }
 

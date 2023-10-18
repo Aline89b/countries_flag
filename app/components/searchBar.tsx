@@ -13,7 +13,7 @@ const SearchBar: React.FC = () => {
     .then((data) => {
        console.log(data.slice(0,10));
        
-       setData(data);
+       setData(data.slice(0,100));
        })
   }, [])
   
