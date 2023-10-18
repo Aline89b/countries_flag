@@ -7,7 +7,7 @@ import getAllData from "@/app/utils/getAllData";
 export async function generateStaticParams() {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const data = await res.json();
-  return  data.map((item: resultProps) => ({ name: item.name.common }));
+  return  data.slice(0,100).map((item: resultProps) => ({ name: item.name.common }));
 }
 
 
@@ -16,7 +16,7 @@ async function getDetail(name: string) {
   const data = await res.json();
   console.log(data);
    
-  return data;
+  return data.slice(0,100);;
 }
 
 
