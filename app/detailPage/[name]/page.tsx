@@ -19,7 +19,7 @@ async function getDetail(name: string) {
 }
 
  
-async function getAllData() {
+ async function getAllData() {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const AllData = await res.json();
   console.log(AllData);
@@ -98,6 +98,7 @@ async function DetailPage({ params }: Params) {
                   <Link href={`/detailPage/${country.name.common}  `}
                     className=" dark:font-black bg-slate-300 p-2 shadow-xl border-solid rounded-lg border cursor-pointer"
                     key={country.cca3}
+                    as={`${country.name.common}`}
                   >
                     {country.name.common}
                   </Link>
