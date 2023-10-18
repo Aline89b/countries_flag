@@ -8,5 +8,5 @@ module.exports = {
     images: {
       domains: ['flagcdn.com', "upload.wikimedia.org"]
     },
-  staticPageGenerationTimeout: 1000,
+  staticPageGenerationTimeout: 10000,
   }
