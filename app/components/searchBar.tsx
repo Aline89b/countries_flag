@@ -17,6 +17,8 @@ const SearchBar: React.FC = () => {
        })
   }, [])
   
+  
+  
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [newArr, setnewArr] = useState<resultProps[]>([]);
  // const [selectedValue, setSelectedValue]= useState<string>("")

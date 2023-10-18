@@ -2,6 +2,7 @@ import { Params } from "@/types";
 import Image from "next/image";
 import { resultProps } from "@/types";
 import Link from "next/link";
+import getAllData from "@/app/utils/getAllData";
 
 export async function generateStaticParams() {
   const res = await fetch("https://restcountries.com/v3.1/all");
@@ -18,14 +19,6 @@ async function getDetail(name: string) {
   return data;
 }
 
- 
- async function getAllData() {
-  const res = await fetch("https://restcountries.com/v3.1/all");
-  const AllData = await res.json();
-  console.log(AllData);
-
-  return AllData;
-}
 
 async function DetailPage({ params }: Params) {
   const data = await getDetail(params.name);
