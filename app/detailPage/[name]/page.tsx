@@ -39,7 +39,6 @@ async function DetailPage({ params }: Params) {
   })
   
   console.log(result)
-
   return (
     <div className="flex flex-wrap  dark:bg-gray-900 dark:text-white p-3">
       {data?.map((item: resultProps) => (
@@ -61,16 +60,16 @@ async function DetailPage({ params }: Params) {
                   <div>
                   <h1 className=" font-extrabold">{item.name.common}</h1>
                   <br></br>
-                    <p><span className=" font-bold">Native Name:</span> {Object.values(item.name.nativeName)[0].common}</p>
+                    <p><span className=" font-bold">Native Name:</span> {item.name.nativeName === null || undefined ? Object.values(item.name.nativeName)[0].common : "none"}</p>
                     <p><span className=" font-bold">Population:</span> {item.population}</p>
                     <p><span className=" font-bold">Region: </span>{item.region}</p>
                     <p><span className=" font-bold">Sub region:</span> {item.subregion}</p>
                     <p><span className=" font-bold">Capital:</span> {item.capital}</p>
                   </div>
                   <div>
-                    <p><span className=" font-bold">Top LevelDomain:</span> {item.tld[0]}</p>
-                    <p><span className=" font-bold">Currencies:</span> {Object.values(item.currencies)[0].name}</p>
-                    <p><span className=" font-bold">Languages:</span> {Object.values(item.languages).join(", ")}</p>
+                    <p><span className=" font-bold">Top LevelDomain:</span> {item.tld === null || undefined ? item.tld[0] : "nothing" }  </p>
+                    <p><span className=" font-bold">Currencies:</span> {item.currencies === null || undefined ? Object.values(item.currencies)[0].name : "none"} </p>
+                    <p><span className=" font-bold">Languages:</span> {item.languages === null || undefined ? Object.values(item.languages).join(", ") : "none"}</p>
                     <div className=" flex flex-wrap mt-4  p-2">
                       <Link
                         className=" bg-sky-500 p-3 shadow-xl border-solid rounded-lg border "
